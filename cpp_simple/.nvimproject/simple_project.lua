@@ -1,8 +1,8 @@
 local utils = require("projects.utils")
-local mypath = utils.local_project_path(utils.script_path())
+local root = utils.local_project_path(utils.script_path())
 
 local M = {
-	root_dir = mypath,
+	root_dir = root,
 
 	extensions = {
 		builds = {
@@ -16,11 +16,14 @@ local M = {
 		},
 		lspconfig = {
 			clangd = {
-				lsp_root = mypath,
+				lsp_root = root,
 				cache_subdir = 'simple',
-				compdb_dir = mypath,
+				compdb_dir = root,
 			},
 		},
+        sessions = {
+            session_name = root:gsub('/', '_'),
+        },
 	},
 }
 
