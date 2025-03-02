@@ -11,8 +11,8 @@ buildall: $(BUILD_DIR_DEP) compile_commands.json
 	cmake --build $(BUILD_DIR) --target all -- -j 8
 .PHONY: clean
 
-compile_commands.json: $(BUILD_DIR_DEP)
-	ln -sf $(BUILD_DIR)/compile_commands.json
+compile_commands.json: $(BUILD_DIR_DEP) ${BUILD_DIR}/compile_commands.json
+	cp $(BUILD_DIR)/compile_commands.json .
 
 $(BUILD_DIR_DEP):
 	mkdir -p $(BUILD_DIR)
